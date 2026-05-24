@@ -265,7 +265,7 @@ export default async function Blog() {
                 </div>
               </div>
               <a
-                href="https://www.instagram.com/pavla.kubesova.reality"
+                href="https://www.instagram.com/pavlakubesova.bidli/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

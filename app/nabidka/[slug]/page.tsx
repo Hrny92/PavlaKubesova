@@ -16,7 +16,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = await getPropertyBySlug(slug);
   if (!p) return {};
-  return { title: `${p.title} – Ing. Pavla Kubešová` };
+  const imgUrl = p.mainImage ? urlFor(p.mainImage).width(1200).height(630).url() : undefined;
+  return {
+    title: `${p.title} – Ing. Pavla Kubešová`,
+    description: p.location ? `${p.title} – ${p.location}. ${p.price ? `Cena: ${p.price}.` : ""} Realitní makléřka Pavla Kubešová.` : undefined,
+    alternates: { canonical: `https://www.pavlakubesova.cz/nabidka/${slug}` },
+    openGraph: {
+      title: p.title,
+      description: p.location ?? undefined,
+      url: `https://www.pavlakubesova.cz/nabidka/${slug}`,
+      type: "website",
+      images: imgUrl ? [{ url: imgUrl, width: 1200, height: 630, alt: p.title }] : [],
+    },
+  };
 }
 
 export default async function PropertyDetailPage({ params }: { params: Promise<{ slug: string }> }) {

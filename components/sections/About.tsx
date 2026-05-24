@@ -12,7 +12,7 @@ export default function About() {
           <div className="relative w-full max-w-md mx-auto lg:mx-0">
             <div className="relative w-full aspect-[4/4] rounded-2xl overflow-hidden">
               <Image
-                src="/images/about-photo.jpg"
+                src="/images/about-photo.webp"
                 alt="Ing. Pavla Kubešová – realitní makléřka"
                 fill
                 className="object-cover object-center"

@@ -90,7 +90,7 @@ export default function Services() {
             minHeight: 320,
           }}>
             <Image
-              src="/images/sluzby.jpg"
+              src="/images/sluzby.webp"
               alt="Služby Pavly Kubešové"
               fill
               className="object-cover"

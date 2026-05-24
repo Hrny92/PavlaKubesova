@@ -82,15 +82,15 @@ export default function Footer() {
               Sledujte mě
             </p>
             <div style={{ display: "flex", gap: 10, marginBottom: 24 }}>
-              <a href="https://www.instagram.com/pavla.kubesova.reality" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer-social-btn">
+              <a href="https://www.instagram.com/pavlakubesova.bidli/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer-social-btn">
                 <IgIcon />
               </a>
-              <a href="#" aria-label="Facebook" className="footer-social-btn">
+              <a href="https://www.facebook.com/pavla.chudomska" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer-social-btn">
                 <FbIcon />
               </a>
             </div>
             <p style={{ color: "#6B7280", fontSize: 12, lineHeight: 1.65 }}>
-              Tipy, novinky a aktuální nabídky na mém Instagramu.
+              Tipy, novinky a aktuální nabídky na sociálních sítích.
             </p>
           </div>
 

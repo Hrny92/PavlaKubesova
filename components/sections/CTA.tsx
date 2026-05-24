@@ -140,7 +140,7 @@ export default function CTA() {
               boxShadow: "0 32px 80px rgba(12,14,26,0.28)",
             }}>
               <Image
-                src="/images/CTA.jpg"
+                src="/images/CTA.webp"
                 alt="Pavla Kubešová – realitní makléřka"
                 fill
                 className="object-cover object-center"

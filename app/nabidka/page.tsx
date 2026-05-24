@@ -95,7 +95,17 @@ function PropertyCard({ p }: { p: Property }) {
   );
 }
 
-export const metadata = { title: "Nabídka nemovitostí – Ing. Pavla Kubešová" };
+export const metadata = {
+  title: "Nabídka nemovitostí – Ing. Pavla Kubešová",
+  description: "Aktuální nabídka nemovitostí k prodeji a pronájmu. Byty, domy, pozemky v Pardubicích, Hradci Králové a po celých Čechách.",
+  alternates: { canonical: "https://www.pavlakubesova.cz/nabidka" },
+  openGraph: {
+    title: "Nabídka nemovitostí – Ing. Pavla Kubešová",
+    description: "Aktuální nabídka nemovitostí k prodeji a pronájmu v Pardubicích a celých Čechách.",
+    url: "https://www.pavlakubesova.cz/nabidka",
+    type: "website",
+  },
+};
 
 export default async function NabidkaPage() {
   const properties = await getAllProperties();

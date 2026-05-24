@@ -29,7 +29,7 @@ export default function Hero() {
         style={{ zIndex: 2, height: "88%", width: "44vw", maxWidth: "600px", minWidth: "260px" }}
       >
         <Image
-          src="/images/hero-photo.png"
+          src="/images/hero-photo.webp"
           alt="Ing. Pavla Kubešová"
           fill
           className="object-contain object-bottom"

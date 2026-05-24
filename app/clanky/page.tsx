@@ -53,7 +53,17 @@ function ArticleCard({ a }: { a: Article }) {
   );
 }
 
-export const metadata = { title: "Články – Ing. Pavla Kubešová" };
+export const metadata = {
+  title: "Realitní blog – tipy a novinky z trhu",
+  description: "Praktické tipy pro prodej a koupi nemovitosti, aktuální vývoj realitního trhu, hypotéky a investice. Blog realitní makléřky Pavly Kubešové.",
+  alternates: { canonical: "https://www.pavlakubesova.cz/clanky" },
+  openGraph: {
+    title: "Realitní blog – Ing. Pavla Kubešová",
+    description: "Praktické tipy a novinky z realitního trhu.",
+    url: "https://www.pavlakubesova.cz/clanky",
+    type: "website",
+  },
+};
 
 export default async function ClankyPage() {
   const articles = await getAllArticles();

@@ -20,7 +20,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const a = await getArticleBySlug(slug);
   if (!a) return {};
-  return { title: `${a.title} – Ing. Pavla Kubešová` };
+  const imgUrl = a.mainImage ? urlFor(a.mainImage).width(1200).height(630).url() : undefined;
+  return {
+    title: `${a.title} – Ing. Pavla Kubešová`,
+    description: a.excerpt ?? undefined,
+    alternates: { canonical: `https://www.pavlakubesova.cz/clanky/${slug}` },
+    openGraph: {
+      title: a.title,
+      description: a.excerpt ?? undefined,
+      url: `https://www.pavlakubesova.cz/clanky/${slug}`,
+      type: "article",
+      publishedTime: a.publishedAt ?? undefined,
+      authors: ["Ing. Pavla Kubešová"],
+      images: imgUrl ? [{ url: imgUrl, width: 1200, height: 630, alt: a.title }] : [],
+    },
+  };
 }
 
 const ptComponents = {
