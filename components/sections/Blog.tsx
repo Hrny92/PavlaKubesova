@@ -257,7 +257,7 @@ export default async function Blog() {
                 </div>
                 <div>
                   <p style={{ color: "#fff", fontWeight: 700, fontSize: 14, marginBottom: 2 }}>
-                    @pavla.kubesova.reality
+                    @pavlakubesova.bidli
                   </p>
                   <p style={{ color: "#9AA0B2", fontSize: 12 }}>
                     Sledujte tipy a aktuální nabídky
