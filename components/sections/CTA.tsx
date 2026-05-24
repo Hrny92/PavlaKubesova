@@ -25,10 +25,15 @@ export default function CTA() {
 
           {/* Foto — na mobilu nahoře */}
           <Reveal direction="right" delay={100} className="order-first lg:order-last" style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ position: "relative", height: 340, borderRadius: 20, overflow: "hidden", boxShadow: "0 24px 60px rgba(12,14,26,0.25)" }}
-              className="lg:h-[580px]">
-              <Image src="/images/CTA.webp" alt="Pavla Kubešová – realitní makléřka" fill className="object-cover object-center" sizes="(max-width: 1024px) 100vw, 45vw" />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "35%", background: "linear-gradient(to top, rgba(12,14,26,0.5) 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 24px 60px rgba(12,14,26,0.25)" }}>
+              <Image
+                src="/images/CTA.webp"
+                alt="Pavla Kubešová – realitní makléřka"
+                width={600}
+                height={800}
+                style={{ width: "100%", height: "auto", display: "block" }}
+                sizes="(max-width: 1024px) 100vw, 45vw"
+              />
             </div>
           </Reveal>
 
