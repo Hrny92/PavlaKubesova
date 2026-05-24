@@ -53,8 +53,9 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("Email error:", err);
-    return NextResponse.json({ error: "Nepodařilo se odeslat zprávu" }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("Email error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

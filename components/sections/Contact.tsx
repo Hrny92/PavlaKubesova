@@ -79,7 +79,8 @@ export default function Contact() {
       if (res.ok) {
         setSent(true);
       } else {
-        setError("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.");
+        const data = await res.json();
+        setError(data.error || "Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.");
       }
     } catch {
       setError("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.");

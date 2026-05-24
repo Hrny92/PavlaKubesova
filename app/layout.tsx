@@ -10,7 +10,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-const siteUrl = "https://www.pavlakubesova.cz";
+const siteUrl = "https://www.kubesovareality.cz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -68,9 +68,10 @@ export const metadata: Metadata = {
       "Prodej, pronájem a výkup nemovitostí v Pardubicích, Hradci Králové a po celých Čechách. Bezplatná konzultace.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/OG-image.png",
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "Ing. Pavla Kubešová – Realitní makléřka",
       },
     ],
@@ -79,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ing. Pavla Kubešová – Realitní makléřka",
     description: "Prodej, pronájem a výkup nemovitostí v Pardubicích a po celých Čechách.",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/OG-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -101,9 +102,9 @@ const jsonLd = {
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/images/og-image.jpg`,
+        url: `${siteUrl}/images/OG-image.png`,
       },
-      image: `${siteUrl}/images/og-image.jpg`,
+      image: `${siteUrl}/images/OG-image.png`,
       description:
         "Realitní makléřka s lidským přístupem. Specializuji se na prodej, pronájem a výkup nemovitostí v Pardubicích, Hradci Králové a po celých Čechách. Nabízím profesionální fotografii, 3D Matterport prohlídky, home staging a hypoteční poradenství.",
       telephone: "+420608518525",
