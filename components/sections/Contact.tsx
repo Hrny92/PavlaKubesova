@@ -63,10 +63,29 @@ const labelStyle: React.CSSProperties = {
 export default function Contact() {
   const [form, setForm] = useState({ fullName: "", email: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.");
+      }
+    } catch {
+      setError("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -211,9 +230,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     width: "100%",
-                    background: "#C9A84C",
+                    background: loading ? "rgba(201,168,76,0.6)" : "#C9A84C",
                     color: "#0C0E1A",
                     fontFamily: font,
                     fontWeight: 700,
@@ -222,16 +242,21 @@ export default function Contact() {
                     border: "none",
                     borderRadius: 999,
                     padding: "17px 32px",
-                    cursor: "pointer",
+                    cursor: loading ? "default" : "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     gap: 10,
+                    transition: "background 0.2s",
                   }}
                 >
-                  Odeslat a domluvit konzultaci
-                  <SendIcon />
+                  {loading ? "Odesílám…" : "Odeslat a domluvit konzultaci"}
+                  {!loading && <SendIcon />}
                 </button>
+
+                {error && (
+                  <p style={{ color: "#e05555", fontSize: 13, textAlign: "center" }}>{error}</p>
+                )}
 
                 <p style={{
                   color: "#9AA0B2", fontSize: 12, textAlign: "center",
