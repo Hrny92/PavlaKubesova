@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getLatestProperties, type Property } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -17,7 +18,6 @@ const ArrowRight = () => (
   </svg>
 );
 
-// Placeholder gradients pro karty bez fotky
 const placeholders = [
   "linear-gradient(160deg, #1a2f4a 0%, #0d1a2e 100%)",
   "linear-gradient(160deg, #1a2e1a 0%, #0d1e12 100%)",
@@ -28,14 +28,13 @@ function PropertyCard({ p, index }: { p: Property; index: number }) {
   const imgUrl = p.mainImage ? urlFor(p.mainImage).width(600).height(480).url() : null;
 
   return (
-    <Link href={`/nabidka/${p.slug.current}`} style={{ textDecoration: "none" }}>
+    <Link href={`/nabidka/${p.slug.current}`} style={{ textDecoration: "none", display: "flex", height: "100%" }}>
       <div style={{
         background: "#111525",
         border: "1px solid rgba(255,255,255,0.07)",
         borderRadius: 18, overflow: "hidden",
-        cursor: "pointer", display: "flex", flexDirection: "column", height: "100%",
+        cursor: "pointer", display: "flex", flexDirection: "column", height: "100%", width: "100%",
       }}>
-        {/* Foto */}
         <div style={{ position: "relative", height: 240, background: placeholders[index % 3], flexShrink: 0 }}>
           {imgUrl && <Image src={imgUrl} alt={p.title} fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" />}
           {p.badge && (
@@ -57,7 +56,6 @@ function PropertyCard({ p, index }: { p: Property; index: number }) {
             color: "#fff", cursor: "pointer",
           }}><HeartIcon /></button>
         </div>
-        {/* Info */}
         <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <p style={{ color: "#9AA0B2", fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 8 }}>
             {p.location}
@@ -102,71 +100,79 @@ export default async function Properties() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Nadpis */}
-        <div className="mb-14" style={{ position: "relative" }}>
-          <div className="text-center">
-            <div className="section-label">Aktuální nabídka</div>
-            <h2 className="text-white font-extrabold leading-tight" style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}>
-              Vybrané nemovitosti<br />
-              v <span style={{ color: "#C9A84C" }}>prodeji</span>
-            </h2>
+        <Reveal>
+          <div className="mb-14" style={{ position: "relative" }}>
+            <div className="text-center">
+              <div className="section-label">Aktuální nabídka</div>
+              <h2 className="text-white font-extrabold leading-tight" style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}>
+                Vybrané nemovitosti<br />
+                v <span style={{ color: "#C9A84C" }}>prodeji</span>
+              </h2>
+            </div>
+            {properties.length > 0 && (
+              <Link href="/nabidka" style={{
+                position: "absolute", right: 0, bottom: 0,
+                display: "flex", alignItems: "center", gap: 8,
+                color: "#C9A84C", fontSize: 11, fontWeight: 700,
+                letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none",
+              }}>
+                Zobrazit všechny
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </Link>
+            )}
           </div>
-          {properties.length > 0 && (
-            <Link href="/nabidka" style={{
-              position: "absolute", right: 0, bottom: 0,
-              display: "flex", alignItems: "center", gap: 8,
-              color: "#C9A84C", fontSize: 11, fontWeight: 700,
-              letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none",
-            }}>
-              Zobrazit všechny
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </Link>
-          )}
-        </div>
+        </Reveal>
 
         {/* Karty nebo prázdný stav */}
         {properties.length > 0 ? (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-            {properties.map((p, i) => <PropertyCard key={p._id} p={p} index={i} />)}
+            {properties.map((p, i) => (
+              <Reveal key={p._id} delay={i * 110} style={{ display: "flex" }}>
+                <PropertyCard p={p} index={i} />
+              </Reveal>
+            ))}
           </div>
         ) : (
-          <div style={{
-            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-            padding: "72px 24px",
-            background: "#111525",
-            border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: 20,
-            gap: 16,
-          }}>
+          <Reveal>
             <div style={{
-              width: 56, height: 56, borderRadius: "50%",
-              background: "rgba(201,168,76,0.08)",
-              border: "1px solid rgba(201,168,76,0.2)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: "#C9A84C",
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              padding: "72px 24px",
+              background: "#111525",
+              border: "1px solid rgba(255,255,255,0.07)",
+              borderRadius: 20,
+              gap: 16,
             }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
+              <div style={{
+                width: 56, height: 56, borderRadius: "50%",
+                background: "rgba(201,168,76,0.08)",
+                border: "1px solid rgba(201,168,76,0.2)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: "#C9A84C",
+              }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <p style={{ color: "#fff", fontWeight: 700, fontSize: 17 }}>Nabídka se připravuje</p>
+              <p style={{ color: "#9AA0B2", fontSize: 14, lineHeight: 1.65, textAlign: "center", maxWidth: 380 }}>
+                Brzy zde najdete aktuální nemovitosti v nabídce. Mezitím mě neváhejte kontaktovat přímo.
+              </p>
+              <Link href="/#kontakt" style={{
+                marginTop: 8,
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "rgba(201,168,76,0.1)",
+                border: "1px solid rgba(201,168,76,0.3)",
+                borderRadius: 999,
+                padding: "10px 24px",
+                color: "#C9A84C", fontSize: 12, fontWeight: 700,
+                letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none",
+              }}>
+                Kontaktovat
+              </Link>
             </div>
-            <p style={{ color: "#fff", fontWeight: 700, fontSize: 17 }}>Nabídka se připravuje</p>
-            <p style={{ color: "#9AA0B2", fontSize: 14, lineHeight: 1.65, textAlign: "center", maxWidth: 380 }}>
-              Brzy zde najdete aktuální nemovitosti v nabídce. Mezitím mě neváhejte kontaktovat přímo.
-            </p>
-            <Link href="/#kontakt" style={{
-              marginTop: 8,
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(201,168,76,0.1)",
-              border: "1px solid rgba(201,168,76,0.3)",
-              borderRadius: 999,
-              padding: "10px 24px",
-              color: "#C9A84C", fontSize: 12, fontWeight: 700,
-              letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none",
-            }}>
-              Kontaktovat
-            </Link>
-          </div>
+          </Reveal>
         )}
 
       </div>

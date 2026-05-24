@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -105,127 +106,124 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Nadpis */}
-        <div className="text-center mb-14">
-          <div className="section-label">Reference klientů</div>
-          <h2
-            className="text-white font-extrabold leading-tight"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}
-          >
-            Co o spolupráci<br />
-            říkají <span style={{ color: "#C9A84C" }}>moji klienti</span>
-          </h2>
-        </div>
+        <Reveal>
+          <div className="text-center mb-14">
+            <div className="section-label">Reference klientů</div>
+            <h2
+              className="text-white font-extrabold leading-tight"
+              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}
+            >
+              Co o spolupráci<br />
+              říkají <span style={{ color: "#C9A84C" }}>moji klienti</span>
+            </h2>
+          </div>
+        </Reveal>
 
         {/* Slider */}
-        <div ref={containerRef} style={{ overflow: "hidden" }}>
-          <div
-            style={{
-              display: "flex",
-              gap: GAP,
-              transform: `translateX(-${translateX}px)`,
-              transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}
-          >
-            {testimonials.map(t => (
-              <div
-                key={t.id}
-                style={{
-                  flex: `0 0 ${cardWidth}px`,
-                  background: "#111525",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  borderRadius: 18,
-                  padding: "32px 28px 28px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  minHeight: 300,
-                  boxSizing: "border-box",
-                }}
-              >
-                {/* Hvězdičky + text */}
-                <div>
-                  <div style={{ display: "flex", gap: 4, marginBottom: 22 }}>
-                    {Array.from({ length: t.stars }).map((_, i) => <StarIcon key={i} />)}
+        <Reveal delay={100} duration={800}>
+          <div ref={containerRef} style={{ overflow: "hidden" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: GAP,
+                transform: `translateX(-${translateX}px)`,
+                transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+              }}
+            >
+              {testimonials.map(t => (
+                <div
+                  key={t.id}
+                  style={{
+                    flex: `0 0 ${cardWidth}px`,
+                    background: "#111525",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                    borderRadius: 18,
+                    padding: "32px 28px 28px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    minHeight: 300,
+                    boxSizing: "border-box",
+                  }}
+                >
+                  <div>
+                    <div style={{ display: "flex", gap: 4, marginBottom: 22 }}>
+                      {Array.from({ length: t.stars }).map((_, i) => <StarIcon key={i} />)}
+                    </div>
+                    <p style={{ color: "#D8DAE5", fontSize: 15, lineHeight: 1.78, margin: 0 }}>
+                      {t.text}
+                    </p>
                   </div>
-                  <p style={{ color: "#D8DAE5", fontSize: 15, lineHeight: 1.78, margin: 0 }}>
-                    {t.text}
-                  </p>
+
+                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, marginTop: 28 }}>
+                    <p style={{ color: "#fff", fontWeight: 700, fontSize: 15, marginBottom: 4 }}>
+                      {t.name}
+                    </p>
+                    <p style={{ color: "#9AA0B2", fontSize: 13 }}>
+                      {t.detail}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Autor */}
-                <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, marginTop: 28 }}>
-                  <p style={{ color: "#fff", fontWeight: 700, fontSize: 15, marginBottom: 4 }}>
-                    {t.name}
-                  </p>
-                  <p style={{ color: "#9AA0B2", fontSize: 13 }}>
-                    {t.detail}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Ovládání */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, marginTop: 40 }}>
-
-          {/* Šipka vlevo */}
-          <button
-            onClick={() => goTo(currentIndex - 1)}
-            disabled={currentIndex === 0}
-            style={{
-              width: 44, height: 44, borderRadius: "50%",
-              border: "1px solid rgba(255,255,255,0.18)",
-              background: "transparent",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: currentIndex === 0 ? "rgba(255,255,255,0.18)" : "#fff",
-              cursor: currentIndex === 0 ? "default" : "pointer",
-              transition: "color 0.2s, border-color 0.2s",
-              flexShrink: 0,
-            }}
-          >
-            <ChevronLeft />
-          </button>
-
-          {/* Tečky */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                style={{
-                  width: i === currentIndex ? 28 : 8,
-                  height: 8,
-                  borderRadius: 999,
-                  background: i === currentIndex ? "#C9A84C" : "rgba(255,255,255,0.2)",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  transition: "width 0.3s ease, background 0.3s ease",
-                }}
-              />
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Šipka vpravo */}
-          <button
-            onClick={() => goTo(currentIndex + 1)}
-            disabled={currentIndex === maxIndex}
-            style={{
-              width: 44, height: 44, borderRadius: "50%",
-              border: "1px solid rgba(255,255,255,0.18)",
-              background: "transparent",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: currentIndex === maxIndex ? "rgba(255,255,255,0.18)" : "#fff",
-              cursor: currentIndex === maxIndex ? "default" : "pointer",
-              transition: "color 0.2s, border-color 0.2s",
-              flexShrink: 0,
-            }}
-          >
-            <ChevronRight />
-          </button>
+          {/* Ovládání */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, marginTop: 40 }}>
+            <button
+              onClick={() => goTo(currentIndex - 1)}
+              disabled={currentIndex === 0}
+              style={{
+                width: 44, height: 44, borderRadius: "50%",
+                border: "1px solid rgba(255,255,255,0.18)",
+                background: "transparent",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: currentIndex === 0 ? "rgba(255,255,255,0.18)" : "#fff",
+                cursor: currentIndex === 0 ? "default" : "pointer",
+                transition: "color 0.2s, border-color 0.2s",
+                flexShrink: 0,
+              }}
+            >
+              <ChevronLeft />
+            </button>
 
-        </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  style={{
+                    width: i === currentIndex ? 28 : 8,
+                    height: 8,
+                    borderRadius: 999,
+                    background: i === currentIndex ? "#C9A84C" : "rgba(255,255,255,0.2)",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                    transition: "width 0.3s ease, background 0.3s ease",
+                  }}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => goTo(currentIndex + 1)}
+              disabled={currentIndex === maxIndex}
+              style={{
+                width: 44, height: 44, borderRadius: "50%",
+                border: "1px solid rgba(255,255,255,0.18)",
+                background: "transparent",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: currentIndex === maxIndex ? "rgba(255,255,255,0.18)" : "#fff",
+                cursor: currentIndex === maxIndex ? "default" : "pointer",
+                transition: "color 0.2s, border-color 0.2s",
+                flexShrink: 0,
+              }}
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        </Reveal>
 
       </div>
     </section>

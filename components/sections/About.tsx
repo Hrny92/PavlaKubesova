@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -8,8 +9,8 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-          {/* Foto */}
-          <div className="relative w-full max-w-md mx-auto lg:mx-0">
+          {/* Foto — přijíždí zleva */}
+          <Reveal direction="left" style={{ width: "100%", maxWidth: "28rem", margin: "0 auto" }} className="lg:mx-0">
             <div className="relative w-full aspect-[4/4] rounded-2xl overflow-hidden">
               <Image
                 src="/images/about-photo.webp"
@@ -19,10 +20,10 @@ export default function About() {
                 sizes="(max-width: 768px) 90vw, 40vw"
               />
             </div>
-          </div>
+          </Reveal>
 
-          {/* Text */}
-          <div style={{ fontFamily: font }}>
+          {/* Text — přijíždí zprava s mírným zpožděním */}
+          <Reveal direction="right" delay={150} style={{ fontFamily: font }}>
             {/* Label */}
             <div className="flex items-center gap-3 mb-7">
               <div className="w-7 h-[2px] bg-[#C9A84C]" />
@@ -62,9 +63,7 @@ export default function About() {
                 Pravidelně se vzdělávám a sleduji vývoj trhu, protože každý klient i každá nemovitost si zaslouží individuální přístup, profesionální péči a strategii šitou na míru. Výsledkem je rychlý, transparentní a férový prodej s klientem na vaší straně a za tu nejlepší možnou cenu.
               </p>
             </div>
-
-            
-          </div>
+          </Reveal>
 
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -61,66 +61,63 @@ export default function WhyMe() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Nadpis */}
-        <div className="text-center mb-16">
-          <div className="section-label">Proč spolupracovat právě se mnou</div>
-          <h2
-            className="text-white font-extrabold leading-tight"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
-          >
-            Pět důvodů, proč klienti<br />
-            volí právě mě
-          </h2>
-        </div>
+        <Reveal>
+          <div className="text-center mb-16">
+            <div className="section-label">Proč spolupracovat právě se mnou</div>
+            <h2
+              className="text-white font-extrabold leading-tight"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
+            >
+              Pět důvodů, proč klienti<br />
+              volí právě mě
+            </h2>
+          </div>
+        </Reveal>
 
-        {/*
-          Jeden CSS grid přes VŠECHNY buňky.
-          Řádky mají výšku dle nejvyššího obsahu v řádku →
-          ikona i název se automaticky dorovnají na výšku popisu.
-        */}
-        <div
-          className="max-w-7xl mx-auto"
-          style={{ display: "grid", gridTemplateColumns: "52px 1fr 1fr" }}
-        >
+        {/* Řádky — každý jako flex row s staggedem */}
+        <div className="max-w-7xl mx-auto" style={{ display: "flex", flexDirection: "column" }}>
           {reasons.map((r, i) => {
             const isLast = i === reasons.length - 1;
-            const borderStyle = isLast ? "none" : "1px solid rgba(255,255,255,0.06)";
-            const py = { paddingTop: "28px", paddingBottom: "28px" };
-
             return (
-              <React.Fragment key={i}>
-                {/* Ikona */}
+              <Reveal key={i} delay={i * 90} duration={650}>
                 <div
-                  style={{ ...py, borderBottom: borderStyle, display: "flex", alignItems: "center" }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0,
+                    borderBottom: isLast ? "none" : "1px solid rgba(255,255,255,0.06)",
+                    paddingTop: 28,
+                    paddingBottom: 28,
+                  }}
                 >
-                  <div style={{
-                    width: 44, height: 44, borderRadius: "50%",
-                    border: "1px solid rgba(201,168,76,0.3)",
-                    background: "rgba(201,168,76,0.05)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#C9A84C", flexShrink: 0,
-                  }}>
-                    {r.icon}
+                  {/* Ikona */}
+                  <div style={{ width: 52, flexShrink: 0, display: "flex", alignItems: "center" }}>
+                    <div style={{
+                      width: 44, height: 44, borderRadius: "50%",
+                      border: "1px solid rgba(201,168,76,0.3)",
+                      background: "rgba(201,168,76,0.05)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#C9A84C",
+                    }}>
+                      {r.icon}
+                    </div>
+                  </div>
+
+                  {/* Název */}
+                  <div style={{ flex: 1, paddingRight: 32, paddingLeft: 16 }}>
+                    <p style={{ color: "#fff", fontWeight: 700, fontSize: 15, margin: 0 }}>
+                      {r.title}
+                    </p>
+                  </div>
+
+                  {/* Popis */}
+                  <div style={{ flex: 1, paddingRight: 32, paddingLeft: 16 }}>
+                    <p style={{ color: "#9AA0B2", fontSize: 14, lineHeight: 1.65, margin: 0 }}>
+                      {r.text}
+                    </p>
                   </div>
                 </div>
-
-                {/* Název */}
-                <div
-                  style={{ ...py, borderBottom: borderStyle, display: "flex", alignItems: "center", paddingRight: 32, paddingLeft: 16 }}
-                >
-                  <p style={{ color: "#fff", fontWeight: 700, fontSize: 15, margin: 0 }}>
-                    {r.title}
-                  </p>
-                </div>
-
-                {/* Popis */}
-                <div
-                  style={{ ...py, borderBottom: borderStyle, display: "flex", alignItems: "center", paddingRight: 32, paddingLeft: 16 }}
-                >
-                  <p style={{ color: "#9AA0B2", fontSize: 14, lineHeight: 1.65, margin: 0 }}>
-                    {r.text}
-                  </p>
-                </div>
-              </React.Fragment>
+              </Reveal>
             );
           })}
         </div>

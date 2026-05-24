@@ -1,3 +1,5 @@
+import Reveal from "@/components/ui/Reveal";
+
 const stats = [
   {
     value: "98%",
@@ -36,28 +38,30 @@ export default function Stats() {
     <div className="bg-[#111525] border-y border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-3 divide-x divide-white/5">
-          {stats.map((s) => (
-            <div key={s.label} className="flex items-center gap-5 py-7 px-8 lg:px-16">
-              {/* Kruhová ikona */}
-              <div className="w-12 h-12 rounded-full border border-[#C9A84C]/35 bg-[#C9A84C]/5 flex items-center justify-center shrink-0">
-                {s.icon}
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 110} style={{ display: "flex" }}>
+              <div className="flex items-center gap-5 py-7 px-8 lg:px-16 w-full">
+                {/* Kruhová ikona */}
+                <div className="w-12 h-12 rounded-full border border-[#C9A84C]/35 bg-[#C9A84C]/5 flex items-center justify-center shrink-0">
+                  {s.icon}
+                </div>
+                {/* Text */}
+                <div>
+                  <p
+                    className="text-white font-extrabold leading-none mb-1"
+                    style={{
+                      fontFamily: "var(--font-poppins), Poppins, system-ui, sans-serif",
+                      fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+                    }}
+                  >
+                    {s.value}
+                  </p>
+                  <p className="text-[#C9A84C]/70 text-[10px] font-semibold tracking-[0.18em]">
+                    {s.label}
+                  </p>
+                </div>
               </div>
-              {/* Text */}
-              <div>
-                <p
-                  className="text-white font-extrabold leading-none mb-1"
-                  style={{
-                    fontFamily: "var(--font-poppins), Poppins, system-ui, sans-serif",
-                    fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-                  }}
-                >
-                  {s.value}
-                </p>
-                <p className="text-[#C9A84C]/70 text-[10px] font-semibold tracking-[0.18em]">
-                  {s.label}
-                </p>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

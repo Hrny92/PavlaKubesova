@@ -16,16 +16,19 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-[#0C0E1A]">
       <Navbar />
       <Hero />
-      <Stats />
-      <About />
-      <WhyMe />
-      <Services />
-      <Properties />
-      <Testimonials />
-      <CTA />
-      <Blog />
-      <Contact />
-      <Footer />
+      {/* Wrapper zajišťuje že sekce "přijedou přes" sticky hero */}
+      <div style={{ position: "relative", zIndex: 10, background: "#0C0E1A", marginTop: "-60vh" }}>
+        <Stats />
+        <About />
+        <WhyMe />
+        <Services />
+        <Properties />
+        <Testimonials />
+        <CTA />
+        <Blog />
+        <Contact />
+        <Footer />
+      </div>
     </main>
   );
 }

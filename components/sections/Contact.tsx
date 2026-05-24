@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -74,8 +75,7 @@ export default function Contact() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
 
           {/* LEVÁ strana */}
-          <div>
-            {/* Label */}
+          <Reveal direction="left">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C" }} />
               <span style={{ color: "#C9A84C", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
@@ -83,7 +83,6 @@ export default function Contact() {
               </span>
             </div>
 
-            {/* Nadpis */}
             <h2
               className="text-white font-extrabold leading-tight"
               style={{ fontSize: "clamp(2.4rem, 4vw, 3.2rem)", marginBottom: 28 }}
@@ -91,12 +90,10 @@ export default function Contact() {
               Pojďme se <span style={{ color: "#C9A84C" }}>seznámit</span>
             </h2>
 
-            {/* Perex */}
             <p style={{ color: "#9AA0B2", fontSize: 15, lineHeight: 1.7, maxWidth: 420, marginBottom: 36 }}>
               Napište mi, zavolejte nebo si rovnou rezervujte nezávaznou konzultaci. Společně probereme vaši nemovitost a navrhnu strategii prodeje.
             </p>
 
-            {/* Kontaktní údaje */}
             <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 36 }}>
               {[
                 { icon: <PhoneIcon />, label: "Telefon", value: "+420 608 518 525", href: "tel:+420608518525" },
@@ -129,7 +126,6 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Lokality */}
             <div>
               <p style={{ color: "#9AA0B2", fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 14 }}>
                 Aktivně působím v lokalitách
@@ -149,10 +145,10 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* PRAVÁ strana — formulář */}
-          <div>
+          <Reveal direction="right" delay={180}>
             {sent ? (
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 400, textAlign: "center" }}>
                 <div style={{
@@ -168,7 +164,6 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {/* Jméno a příjmení */}
                 <div>
                   <label style={labelStyle}>Jméno a příjmení</label>
                   <input
@@ -180,7 +175,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* E-mail + Telefon */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                   <div>
                     <label style={labelStyle}>E-mail</label>
@@ -204,7 +198,6 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Dotaz */}
                 <div>
                   <label style={labelStyle}>Dotaz</label>
                   <textarea
@@ -216,7 +209,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Tlačítko */}
                 <button
                   type="submit"
                   style={{
@@ -241,7 +233,6 @@ export default function Contact() {
                   <SendIcon />
                 </button>
 
-                {/* Bezpečnostní text */}
                 <p style={{
                   color: "#9AA0B2", fontSize: 12, textAlign: "center",
                   display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
@@ -250,7 +241,7 @@ export default function Contact() {
                 </p>
               </form>
             )}
-          </div>
+          </Reveal>
 
         </div>
       </div>

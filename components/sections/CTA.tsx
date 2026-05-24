@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -20,7 +21,6 @@ export default function CTA() {
         position: "relative",
       }}
     >
-      {/* Jemná textura — velký zlatý kruh v pozadí */}
       <div style={{
         position: "absolute", top: "-20%", right: "38%",
         width: 600, height: 600, borderRadius: "50%",
@@ -37,10 +37,8 @@ export default function CTA() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
 
-          {/* LEVÁ strana — obsah */}
-          <div style={{ position: "relative", zIndex: 1 }}>
-
-            {/* Label */}
+          {/* LEVÁ strana */}
+          <Reveal direction="left" style={{ position: "relative", zIndex: 1 }}>
             <p style={{
               color: "rgba(12,14,26,0.55)",
               fontSize: 11, fontWeight: 700,
@@ -50,7 +48,6 @@ export default function CTA() {
               Proces spolupráce
             </p>
 
-            {/* Nadpis */}
             <h2 style={{
               color: "#0C0E1A",
               fontSize: "clamp(2rem, 3.2vw, 2.7rem)",
@@ -60,12 +57,9 @@ export default function CTA() {
               Jak funguje<br />spolupráce?
             </h2>
 
-            {/* Kroky */}
             <div style={{ display: "flex", flexDirection: "column" }}>
               {steps.map((s, i) => (
                 <div key={s.n} style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
-
-                  {/* Číslo + spojovací linka */}
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
                     <div style={{
                       width: 46, height: 46, borderRadius: "50%",
@@ -77,11 +71,9 @@ export default function CTA() {
                       {s.n}
                     </div>
                     {i < steps.length - 1 && (
-                      <div style={{ width: 1, height: 32, background: "rgba(12,14,26,0.22)", marginTop: 0 }} />
+                      <div style={{ width: 1, height: 32, background: "rgba(12,14,26,0.22)" }} />
                     )}
                   </div>
-
-                  {/* Text kroku */}
                   <p style={{
                     color: "#0C0E1A",
                     fontSize: 16, fontWeight: 600, lineHeight: 1.5,
@@ -90,12 +82,10 @@ export default function CTA() {
                   }}>
                     {s.text}
                   </p>
-
                 </div>
               ))}
             </div>
 
-            {/* Dělící čára + CTA */}
             <div style={{
               marginTop: 44,
               paddingTop: 36,
@@ -127,11 +117,10 @@ export default function CTA() {
                 </svg>
               </a>
             </div>
-
-          </div>
+          </Reveal>
 
           {/* PRAVÁ strana — fotka */}
-          <div style={{ position: "relative", zIndex: 1 }}>
+          <Reveal direction="right" delay={200} style={{ position: "relative", zIndex: 1 }}>
             <div style={{
               position: "relative",
               height: 580,
@@ -146,14 +135,13 @@ export default function CTA() {
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 90vw, 45vw"
               />
-              {/* Jemný gradient overlay dole */}
               <div style={{
                 position: "absolute", bottom: 0, left: 0, right: 0, height: "35%",
                 background: "linear-gradient(to top, rgba(12,14,26,0.5) 0%, transparent 100%)",
                 pointerEvents: "none",
               }} />
             </div>
-          </div>
+          </Reveal>
 
         </div>
       </div>

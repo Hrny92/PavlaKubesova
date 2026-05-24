@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
 
@@ -60,6 +61,7 @@ const cardBase: React.CSSProperties = {
   flexDirection: "column",
   fontFamily: font,
   backdropFilter: "blur(8px)",
+  height: "100%",
 };
 
 export default function Services() {
@@ -68,27 +70,23 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Nadpis */}
-        <div className="text-center mb-14">
-          <div className="section-label">Služby</div>
-          <h2
-            className="text-white font-extrabold leading-tight"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}
-          >
-            Co pro vás<br />
-            mohu <span style={{ color: "#C9A84C" }}>udělat</span>
-          </h2>
-        </div>
+        <Reveal>
+          <div className="text-center mb-14">
+            <div className="section-label">Služby</div>
+            <h2
+              className="text-white font-extrabold leading-tight"
+              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}
+            >
+              Co pro vás<br />
+              mohu <span style={{ color: "#C9A84C" }}>udělat</span>
+            </h2>
+          </div>
+        </Reveal>
 
-        {/* TOP řada: foto vlevo + velká karta uprostřed + 2 střední vpravo */}
+        {/* TOP řada */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 12 }}>
 
-          {/* Foto dlaždice */}
-          <div style={{
-            position: "relative",
-            borderRadius: 16,
-            overflow: "hidden",
-            minHeight: 320,
-          }}>
+          <Reveal direction="left" style={{ position: "relative", borderRadius: 16, overflow: "hidden", minHeight: 320 }}>
             <Image
               src="/images/sluzby.webp"
               alt="Služby Pavly Kubešové"
@@ -100,53 +98,52 @@ export default function Services() {
               position: "absolute", inset: 0,
               background: "linear-gradient(160deg, rgba(12,14,26,0.2) 0%, rgba(12,14,26,0.0) 100%)",
             }} />
-          </div>
+          </Reveal>
 
-          {/* Velká karta */}
-          <div className="service-card" style={{
-            ...cardBase,
-            justifyContent: "space-between",
-          }}>
-            <div style={{ marginBottom: 24 }}>
-              <Icon><IconHome /></Icon>
-            </div>
-            <div>
-              <p style={{ color: "#fff", fontWeight: 800, fontSize: 24, marginBottom: 12, lineHeight: 1.2 }}>
-                Prodej a pronájem
-              </p>
-              <p style={{ color: "#9AA0B2", fontSize: 13, lineHeight: 1.7 }}>
-                Prodám nebo pronajmu vaši nemovitost tak, aby vám to dávalo smysl finančně i lidsky.
-                Vy řešíte plány do budoucna, já vyřeším všechno kolem smluv, prohlídek, vyjednávání i předání nemovitosti.
-              </p>
-            </div>
-          </div>
-
-          {/* 2 střední karty vpravo */}
-          <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 12 }}>
-            <div className="service-card" style={cardBase}>
-              <div style={{ marginBottom: 16 }}>
-                <Icon><IconCamera /></Icon>
+          <Reveal delay={130} style={{ display: "flex" }}>
+            <div className="service-card" style={{ ...cardBase, justifyContent: "space-between" }}>
+              <div style={{ marginBottom: 24 }}>
+                <Icon><IconHome /></Icon>
               </div>
-              <p style={{ color: "#fff", fontWeight: 800, fontSize: 18, marginBottom: 8, lineHeight: 1.2 }}>
-                Špičková prezentace
-              </p>
-              <p style={{ color: "#9AA0B2", fontSize: 12, lineHeight: 1.65 }}>
-                Fotky z mobilu necháme influencerům. Vaši nemovitost připravím tak, aby zaujala během prvních 5 vteřin – home staging, profi foto, 3D Matterport, video.
-              </p>
-            </div>
-
-            <div className="service-card" style={cardBase}>
-              <div style={{ marginBottom: 16 }}>
-                <Icon><IconCredit /></Icon>
+              <div>
+                <p style={{ color: "#fff", fontWeight: 800, fontSize: 24, marginBottom: 12, lineHeight: 1.2 }}>
+                  Prodej a pronájem
+                </p>
+                <p style={{ color: "#9AA0B2", fontSize: 13, lineHeight: 1.7 }}>
+                  Prodám nebo pronajmu vaši nemovitost tak, aby vám to dávalo smysl finančně i lidsky.
+                  Vy řešíte plány do budoucna, já vyřeším všechno kolem smluv, prohlídek, vyjednávání i předání nemovitosti.
+                </p>
               </div>
-              <p style={{ color: "#fff", fontWeight: 800, fontSize: 18, marginBottom: 8, lineHeight: 1.2 }}>
-                Hypotéky a financování
-              </p>
-              <p style={{ color: "#9AA0B2", fontSize: 12, lineHeight: 1.65 }}>
-                Spolupracuji s prověřenými finančními specialisty a společně najdeme řešení, které bude dávat smysl dnes i za pár let.
-              </p>
             </div>
-          </div>
+          </Reveal>
+
+          <Reveal direction="right" delay={260} style={{ display: "flex" }}>
+            <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 12, width: "100%" }}>
+              <div className="service-card" style={cardBase}>
+                <div style={{ marginBottom: 16 }}>
+                  <Icon><IconCamera /></Icon>
+                </div>
+                <p style={{ color: "#fff", fontWeight: 800, fontSize: 18, marginBottom: 8, lineHeight: 1.2 }}>
+                  Špičková prezentace
+                </p>
+                <p style={{ color: "#9AA0B2", fontSize: 12, lineHeight: 1.65 }}>
+                  Fotky z mobilu necháme influencerům. Vaši nemovitost připravím tak, aby zaujala během prvních 5 vteřin – home staging, profi foto, 3D Matterport, video.
+                </p>
+              </div>
+
+              <div className="service-card" style={cardBase}>
+                <div style={{ marginBottom: 16 }}>
+                  <Icon><IconCredit /></Icon>
+                </div>
+                <p style={{ color: "#fff", fontWeight: 800, fontSize: 18, marginBottom: 8, lineHeight: 1.2 }}>
+                  Hypotéky a financování
+                </p>
+                <p style={{ color: "#9AA0B2", fontSize: 12, lineHeight: 1.65 }}>
+                  Spolupracuji s prověřenými finančními specialisty a společně najdeme řešení, které bude dávat smysl dnes i za pár let.
+                </p>
+              </div>
+            </div>
+          </Reveal>
 
         </div>
 
@@ -157,18 +154,20 @@ export default function Services() {
             { title: "Energie a přepisy", text: "Papírování s elektřinou a plynem nechte klidně na mně. Postarám se o přepisy energií, komunikaci s dodavateli i všechny administrativní detaily.", icon: <IconZap /> },
             { title: "Investiční projekty", text: "Pomohu vám najít investici, která vydělává dnes, ale i za několik let. Počítám čísla, hlídám rizika a přemýšlím jako investor.", icon: <IconInvest /> },
             { title: "Odhady nemovitostí", text: "Dostanete realistickou cenu podloženou daty, zkušeností a skutečnou znalostí trhu. Přesnost je cennější než optimismus.", icon: <IconScale /> },
-          ].map(s => (
-            <div key={s.title} className="service-card" style={cardBase}>
-              <div style={{ marginBottom: 20 }}>
-                <Icon>{s.icon}</Icon>
+          ].map((s, i) => (
+            <Reveal key={s.title} delay={i * 90} style={{ display: "flex" }}>
+              <div className="service-card" style={cardBase}>
+                <div style={{ marginBottom: 20 }}>
+                  <Icon>{s.icon}</Icon>
+                </div>
+                <p style={{ color: "#fff", fontWeight: 800, fontSize: 17, marginBottom: 8, lineHeight: 1.25 }}>
+                  {s.title}
+                </p>
+                <p style={{ color: "#9AA0B2", fontSize: 12, lineHeight: 1.65 }}>
+                  {s.text}
+                </p>
               </div>
-              <p style={{ color: "#fff", fontWeight: 800, fontSize: 17, marginBottom: 8, lineHeight: 1.25 }}>
-                {s.title}
-              </p>
-              <p style={{ color: "#9AA0B2", fontSize: 12, lineHeight: 1.65 }}>
-                {s.text}
-              </p>
-            </div>
+            </Reveal>
           ))}
         </div>
 

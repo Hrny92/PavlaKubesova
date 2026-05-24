@@ -1,3 +1,4 @@
+import Reveal from "@/components/ui/Reveal";
 import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 const font = "var(--font-poppins), Poppins, system-ui, sans-serif";
@@ -27,90 +28,88 @@ const FbIcon = () => (
 export default function Footer() {
   return (
     <footer style={{ background: "#080A14", fontFamily: font, borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-
       <div className="max-w-7xl mx-auto px-6 lg:px-10" style={{ paddingTop: 56, paddingBottom: 48 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
 
-          {/* Brand */}
-          <div>
-            <p style={{ color: "#C9A84C", fontWeight: 800, fontSize: 15, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 6 }}>
-              Pavla Kubešová
-            </p>
-            <p style={{ color: "#9AA0B2", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 18 }}>
-              Realitní makléřka
-            </p>
-            <p style={{ color: "#6B7280", fontSize: 13, lineHeight: 1.75, maxWidth: 260 }}>
-              Pomáhám klientům prodat, koupit nebo pronajmout nemovitost po celých Čechách.
-            </p>
-          </div>
+        <Reveal duration={800}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
 
-          {/* Navigace */}
-          <div>
-            <p style={{ color: "#fff", fontWeight: 700, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 20 }}>
-              Navigace
-            </p>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-              {navLinks.map(l => (
-                <li key={l.href}>
-                  <a href={l.href} className="footer-nav-link">{l.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Kontakt */}
-          <div>
-            <p style={{ color: "#fff", fontWeight: 700, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 20 }}>
-              Kontakt
-            </p>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-              <li>
-                <a href="tel:+420608518525" className="footer-nav-link">+420 608 518 525</a>
-              </li>
-              <li>
-                <a href="mailto:pavla.kubesova@bidli.cz" className="footer-nav-link">pavla.kubesova@bidli.cz</a>
-              </li>
-              <li style={{ color: "#6B7280", fontSize: 13, lineHeight: 1.6 }}>
-                Pardubice, Hradec Králové<br />celé Čechy
-              </li>
-            </ul>
-          </div>
-
-          {/* Sociální sítě */}
-          <div>
-            <p style={{ color: "#fff", fontWeight: 700, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 20 }}>
-              Sledujte mě
-            </p>
-            <div style={{ display: "flex", gap: 10, marginBottom: 24 }}>
-              <a href="https://www.instagram.com/pavlakubesova.bidli/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer-social-btn">
-                <IgIcon />
-              </a>
-              <a href="https://www.facebook.com/pavla.chudomska" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer-social-btn">
-                <FbIcon />
-              </a>
+            {/* Brand */}
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/PK-logo.svg" alt="Pavla Kubešová" style={{ height: "28px", width: "auto", marginBottom: 20 }} />
+              <p style={{ color: "#6B7280", fontSize: 13, lineHeight: 1.75, maxWidth: 260 }}>
+                Pomáhám klientům prodat, koupit nebo pronajmout nemovitost po celých Čechách.
+              </p>
             </div>
-            <p style={{ color: "#6B7280", fontSize: 12, lineHeight: 1.65 }}>
-              Tipy, novinky a aktuální nabídky na sociálních sítích.
+
+            {/* Navigace */}
+            <div>
+              <p style={{ color: "#fff", fontWeight: 700, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 20 }}>
+                Navigace
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+                {navLinks.map(l => (
+                  <li key={l.href}>
+                    <a href={l.href} className="footer-nav-link">{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Kontakt */}
+            <div>
+              <p style={{ color: "#fff", fontWeight: 700, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 20 }}>
+                Kontakt
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+                <li>
+                  <a href="tel:+420608518525" className="footer-nav-link">+420 608 518 525</a>
+                </li>
+                <li>
+                  <a href="mailto:pavla.kubesova@bidli.cz" className="footer-nav-link">pavla.kubesova@bidli.cz</a>
+                </li>
+                <li style={{ color: "#6B7280", fontSize: 13, lineHeight: 1.6 }}>
+                  Pardubice, Hradec Králové<br />celé Čechy
+                </li>
+              </ul>
+            </div>
+
+            {/* Sociální sítě */}
+            <div>
+              <p style={{ color: "#fff", fontWeight: 700, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 20 }}>
+                Sledujte mě
+              </p>
+              <div style={{ display: "flex", gap: 10, marginBottom: 24 }}>
+                <a href="https://www.instagram.com/pavlakubesova.bidli/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer-social-btn">
+                  <IgIcon />
+                </a>
+                <a href="https://www.facebook.com/pavla.chudomska" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer-social-btn">
+                  <FbIcon />
+                </a>
+              </div>
+              <p style={{ color: "#6B7280", fontSize: 12, lineHeight: 1.65 }}>
+                Tipy, novinky a aktuální nabídky na sociálních sítích.
+              </p>
+            </div>
+
+          </div>
+
+          {/* Dělicí čára */}
+          <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: 24 }} />
+
+          {/* Spodní lišta */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+            <p style={{ color: "#4B5363", fontSize: 12 }}>
+              © 2026 Ing. Pavla Kubešová · Všechna práva vyhrazena.
             </p>
+            <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+              <a href="/gdpr" className="footer-legal-link">
+                Ochrana osobních údajů (GDPR)
+              </a>
+              <CookieSettingsButton />
+            </div>
           </div>
-
-        </div>
-
-        {/* Dělicí čára */}
-        <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: 24 }} />
-
-        {/* Spodní lišta */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <p style={{ color: "#4B5363", fontSize: 12 }}>
-            © 2026 Ing. Pavla Kubešová · Všechna práva vyhrazena.
-          </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <a href="/gdpr" className="footer-legal-link">
-              Ochrana osobních údajů (GDPR)
-            </a>
-            <CookieSettingsButton />
-          </div>
-        </div>
+        </Reveal>
 
       </div>
     </footer>

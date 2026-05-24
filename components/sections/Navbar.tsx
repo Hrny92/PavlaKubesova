@@ -40,9 +40,9 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16 lg:h-18">
 
           {/* Logo */}
-          <a href="#" className="flex flex-col leading-none" onClick={close}>
-            <span className="text-white font-bold text-sm tracking-[0.15em] uppercase">Pavla Kubešová</span>
-            <span className="text-[#C9A84C] text-[10px] tracking-[0.25em] uppercase">Realitní makléřka</span>
+          <a href="#" className="flex items-center" onClick={close}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/PK-logo.svg" alt="Pavla Kubešová" style={{ height: "20px", width: "auto" }} />
           </a>
 
           {/* Desktop nav */}
@@ -97,9 +97,9 @@ export default function Navbar() {
         >
           {/* Horní lišta se logem + zavírací tlačítko */}
           <div className="flex items-center justify-between px-6 h-16 border-b border-white/5">
-            <a href="#" className="flex flex-col leading-none" onClick={close}>
-              <span className="text-white font-bold text-sm tracking-[0.15em] uppercase">Pavla Kubešová</span>
-              <span className="text-[#C9A84C] text-[10px] tracking-[0.25em] uppercase">Realitní makléřka</span>
+            <a href="#" className="flex items-center" onClick={close}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/PK-logo.svg" alt="Pavla Kubešová" style={{ height: "24px", width: "auto" }} />
             </a>
           </div>
 
