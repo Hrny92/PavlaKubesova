@@ -1,0 +1,662 @@
+[
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Název nemovitosti"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 200
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Slug (URL adresa)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Novinka",
+              "value": "Novinka"
+            },
+            {
+              "title": "3D prohlídka",
+              "value": "3D prohlídka"
+            },
+            {
+              "title": "Exkluzivně",
+              "value": "Exkluzivně"
+            },
+            {
+              "title": "Sleva",
+              "value": "Sleva"
+            }
+          ]
+        },
+        "name": "badge",
+        "type": "string",
+        "title": "Badge (štítek na kartě)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Prodej",
+              "value": "prodej"
+            },
+            {
+              "title": "Pronájem",
+              "value": "pronajem"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "prodej",
+        "name": "transactionType",
+        "type": "string",
+        "title": "Typ transakce"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Byt",
+              "value": "byt"
+            },
+            {
+              "title": "Dům",
+              "value": "dum"
+            },
+            {
+              "title": "Pozemek",
+              "value": "pozemek"
+            },
+            {
+              "title": "Komerce",
+              "value": "komerce"
+            }
+          ]
+        },
+        "initialValue": "byt",
+        "name": "category",
+        "type": "string",
+        "title": "Kategorie"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Aktivní",
+              "value": "active"
+            },
+            {
+              "title": "Rezervováno",
+              "value": "reserved"
+            },
+            {
+              "title": "Prodáno / Pronajato",
+              "value": "sold"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "active",
+        "name": "status",
+        "type": "string",
+        "title": "Stav nabídky"
+      },
+      {
+        "name": "location",
+        "type": "string",
+        "title": "Lokalita"
+      },
+      {
+        "name": "price",
+        "type": "string",
+        "title": "Cena (např. 5 890 000 Kč)"
+      },
+      {
+        "name": "area",
+        "type": "string",
+        "title": "Plocha (m²)"
+      },
+      {
+        "name": "layout",
+        "type": "string",
+        "title": "Dispozice (např. 3+kk)"
+      },
+      {
+        "name": "floor",
+        "type": "string",
+        "title": "Patro (např. 4. / 6.)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "mainImage",
+        "type": "image",
+        "title": "Hlavní obrázek"
+      },
+      {
+        "options": {
+          "layout": "grid"
+        },
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "gallery",
+        "type": "array",
+        "title": "Galerie"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "videoUrl",
+        "type": "url",
+        "title": "Odkaz na YouTube video"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Např. https://my.matterport.com/show/?m=xyz",
+        "name": "matterportUrl",
+        "type": "url",
+        "title": "Odkaz na 3D prohlídku (Matterport)"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "description",
+        "type": "array",
+        "title": "Popis nemovitosti"
+      },
+      {
+        "name": "accessories",
+        "type": "string",
+        "title": "Příslušenství"
+      },
+      {
+        "name": "energyEfficiency",
+        "type": "string",
+        "title": "Energetická náročnost"
+      },
+      {
+        "name": "buildingInfo",
+        "type": "string",
+        "title": "Stavba a podlaží"
+      },
+      {
+        "name": "infrastructure",
+        "type": "string",
+        "title": "Infrastruktura"
+      },
+      {
+        "name": "mapLink",
+        "type": "string",
+        "title": "Odkaz na mapu (Google Maps embed)"
+      },
+      {
+        "name": "history",
+        "type": "text",
+        "title": "Historie / Rekonstrukce"
+      }
+    ],
+    "name": "property",
+    "type": "document",
+    "title": "Nemovitosti"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Nadpis článku"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 200
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Slug (URL adresa)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Prodej",
+              "value": "Prodej"
+            },
+            {
+              "title": "Koupě",
+              "value": "Koupě"
+            },
+            {
+              "title": "Pronájem",
+              "value": "Pronájem"
+            },
+            {
+              "title": "Hypotéky",
+              "value": "Hypotéky"
+            },
+            {
+              "title": "Trh",
+              "value": "Trh"
+            },
+            {
+              "title": "Investice",
+              "value": "Investice"
+            },
+            {
+              "title": "Tipy",
+              "value": "Tipy"
+            }
+          ]
+        },
+        "name": "category",
+        "type": "string",
+        "title": "Kategorie"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Datum publikace"
+      },
+      {
+        "rows": 3,
+        "name": "excerpt",
+        "type": "text",
+        "title": "Krátký popis (perex)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "mainImage",
+        "type": "image",
+        "title": "Hlavní obrázek"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "name": "caption",
+                "type": "string",
+                "title": "Popisek"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Obsah článku"
+      }
+    ],
+    "name": "article",
+    "type": "document",
+    "title": "Články"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Interní název (pro přehled v Sanity)"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Např. https://www.instagram.com/reel/XYZ123/",
+        "name": "embedUrl",
+        "type": "url",
+        "title": "Odkaz na Instagram příspěvek / Reels"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Screenshot nebo náhled videa/příspěvku",
+        "name": "thumbnail",
+        "type": "image",
+        "title": "Náhledový obrázek (thumbnail)"
+      },
+      {
+        "name": "viewCount",
+        "type": "string",
+        "title": "Počet zhlédnutí (zobrazit na kartě, např. 12,4k)"
+      },
+      {
+        "initialValue": 1,
+        "name": "order",
+        "type": "number",
+        "title": "Pořadí zobrazení (1 = první)"
+      }
+    ],
+    "name": "instagramPost",
+    "type": "document",
+    "title": "Instagram příspěvky"
+  }
+]
