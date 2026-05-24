@@ -31,10 +31,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10" style={{ paddingTop: 56, paddingBottom: 48 }}>
 
         <Reveal duration={800}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
+          <div className="grid grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] gap-8 lg:gap-10 mb-12">
 
             {/* Brand */}
-            <div>
+            <div className="col-span-2 lg:col-span-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/PK-logo.svg" alt="Pavla Kubešová" style={{ height: "28px", width: "auto", marginBottom: 20 }} />
               <p style={{ color: "#6B7280", fontSize: 13, lineHeight: 1.75, maxWidth: 260 }}>

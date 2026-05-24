@@ -85,7 +85,7 @@ export default async function Blog() {
         </Reveal>
 
         {/* Dvě kolonky */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, alignItems: "stretch" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
 
           {/* LEVÁ — Blog posty */}
           <Reveal direction="left" delay={80} style={{ display: "flex" }}>
@@ -239,11 +239,13 @@ export default async function Blog() {
               )}
 
               <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
                 background: "#111525",
                 border: "1px solid rgba(255,255,255,0.07)",
                 borderRadius: 16,
                 padding: "16px 20px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 14,
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                   <div style={{
@@ -254,7 +256,7 @@ export default async function Blog() {
                   }}>
                     <InstagramIcon size={22} />
                   </div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <p style={{ color: "#fff", fontWeight: 700, fontSize: 14, marginBottom: 2 }}>
                       @pavlakubesova.bidli
                     </p>
@@ -268,15 +270,16 @@ export default async function Blog() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    display: "inline-flex", alignItems: "center",
+                    display: "flex", alignItems: "center", justifyContent: "center",
                     background: "rgba(255,255,255,0.08)",
                     border: "1px solid rgba(255,255,255,0.15)",
                     borderRadius: 999,
-                    padding: "9px 20px",
+                    padding: "10px 20px",
                     color: "#fff", fontSize: 11, fontWeight: 700,
                     letterSpacing: "0.12em", textTransform: "uppercase",
                     textDecoration: "none",
-                    flexShrink: 0,
+                    width: "100%",
+                    boxSizing: "border-box",
                   }}
                 >
                   Sledovat

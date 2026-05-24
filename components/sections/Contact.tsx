@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <section id="kontakt" className="py-24 lg:py-32 bg-[#0C0E1A]" style={{ fontFamily: font }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
           {/* LEVÁ strana */}
           <Reveal direction="left">
@@ -175,7 +175,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label style={labelStyle}>E-mail</label>
                     <input

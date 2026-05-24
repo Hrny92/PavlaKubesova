@@ -127,7 +127,7 @@ export default async function Properties() {
 
         {/* Karty nebo prázdný stav */}
         {properties.length > 0 ? (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {properties.map((p, i) => (
               <Reveal key={p._id} delay={i * 110} style={{ display: "flex" }}>
                 <PropertyCard p={p} index={i} />
