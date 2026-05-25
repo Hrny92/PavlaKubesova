@@ -24,11 +24,12 @@ const placeholders = [
   "linear-gradient(160deg, #2e2218 0%, #1e1510 100%)",
 ];
 
+const cardLinkStyle = { textDecoration: "none", display: "flex", height: "100%" } as const;
+
 function PropertyCard({ p, index }: { p: Property; index: number }) {
   const imgUrl = p.mainImage ? urlFor(p.mainImage).width(600).height(480).url() : null;
 
-  return (
-    <Link href={`/nabidka/${p.slug.current}`} style={{ textDecoration: "none", display: "flex", height: "100%" }}>
+  const inner = (
       <div style={{
         background: "#111525",
         border: "1px solid rgba(255,255,255,0.07)",
@@ -88,6 +89,19 @@ function PropertyCard({ p, index }: { p: Property; index: number }) {
           </div>
         </div>
       </div>
+  );
+
+  if (p.externalUrl) {
+    return (
+      <a href={p.externalUrl} target="_blank" rel="noopener noreferrer" style={cardLinkStyle}>
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={`/nabidka/${p.slug.current}`} style={cardLinkStyle}>
+      {inner}
     </Link>
   );
 }

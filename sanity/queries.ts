@@ -17,6 +17,7 @@ export type Property = {
   status: "active" | "reserved" | "sold";
   mainImage: { asset: { _ref: string } };
   gallery?: { asset: { _ref: string } }[];
+  externalUrl?: string;
   videoUrl?: string;
   matterportUrl?: string;
   description?: unknown[];
@@ -31,7 +32,7 @@ export type Property = {
 
 const PROPERTY_FIELDS = `
   _id, title, slug, transactionType, category, location, price, area, layout, floor, badge, status,
-  mainImage, _createdAt
+  mainImage, externalUrl, _createdAt
 `;
 
 export async function getLatestProperties(count = 3): Promise<Property[]> {

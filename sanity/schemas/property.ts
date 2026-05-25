@@ -77,6 +77,12 @@ export default {
       of: [{ type: "image" }],
       options: { layout: "grid" },
     },
+    {
+      name: "externalUrl",
+      title: "Odkaz na inzerát (Sreality, Bidli apod.)",
+      type: "url",
+      description: "Pokud je vyplněno, kliknutí na kartu přesměruje na tento odkaz (nová záložka) místo detailu nabídky.",
+    },
     { name: "videoUrl", title: "Odkaz na YouTube video", type: "url" },
     {
       name: "matterportUrl",
